@@ -27,11 +27,3 @@ dist
 /MDK-ARM/*.hex
 /MDK-ARM/*.bin
 /MDK-ARM/.pack
-
-MDK-ARM/controller-v2/uc_gui.lib
-MDK-ARM/controller-v2/*.hex
-Public/出厂文件/output/*.bin
-Public/出厂文件/output/*.hex
-Public/SIL认证/*
-
-MDK-ARM/controller-v2/controller.hex
