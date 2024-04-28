@@ -1,0 +1,37 @@
+# Binaries for programs and plugins
+*.exe
+*.exe~
+*.dll
+*.so
+*.dylib
+
+# Test binary, built with `go test -c`
+*.test
+*.log
+# Output of the go coverage tool, specifically when used with LiteIDE
+*.out
+.VSCodeCounter
+USER/Listings
+USER/Objects
+build
+dist
+
+/MDK-ARM/.vscode/uv4.log
+/MDK-ARM/.cmsis/include
+/MDK-ARM/.eide
+/MDK-ARM/MDK-ARM.code-workspace
+/MDK-ARM/.vscode/settings.json
+/MDK-ARM/.vscode/tasks.json
+/MDK-ARM/.clang-format
+/MDK-ARM/.vscode/uv4.log.lock
+/MDK-ARM/*.hex
+/MDK-ARM/*.bin
+/MDK-ARM/.pack
+
+MDK-ARM/controller-v2/uc_gui.lib
+MDK-ARM/controller-v2/*.hex
+Public/出厂文件/output/*.bin
+Public/出厂文件/output/*.hex
+Public/SIL认证/*
+
+MDK-ARM/controller-v2/controller.hex
