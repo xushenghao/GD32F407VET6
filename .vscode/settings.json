@@ -59,6 +59,8 @@
     "i2cs.h": "c",
     "bsp.h": "c",
     "sys.h": "c",
-    "delay.h": "c"
+    "delay.h": "c",
+    "step_motor.h": "c",
+    "tim.h": "c"
   }
 }

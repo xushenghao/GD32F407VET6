@@ -1,5 +1,5 @@
 /**
- * @file gpio.h
+ * @file gpios.h
  * @brief Header file for GPIO configuration and control.
  *
  * This file contains the declarations and definitions for GPIO configuration and control functions.
@@ -79,4 +79,58 @@
  * @param pin The GPIO pin.
  */
 #define GPIO_SET_ANALOG(port, pin) (HAL_GPIO_Init(port, &(GPIO_InitTypeDef){pin, GPIO_MODE_ANALOG, GPIO_NOPULL, GPIO_SPEED_FREQ_LOW, 0}))
+
+/**
+ * @brief Structure representing a GPIO pin.
+ */
+typedef struct GPIO
+{
+    GPIO_TypeDef *port; // The GPIO port.
+    uint16_t pin;       // The GPIO pin.
+
+    /**
+     * @brief Set the GPIO pin to high.
+     *
+     * @param gpio The GPIO pin.
+     */
+    void (*set)(struct GPIO gpio);
+
+    /**
+     * @brief Set the GPIO pin to low.
+     *
+     * @param gpio The GPIO pin.
+     */
+    void (*reset)(struct GPIO gpio);
+
+    /**
+     * @brief Toggle the state of the GPIO pin.
+     *
+     * @param gpio The GPIO pin.
+     */
+    void (*toggle)(struct GPIO gpio);
+
+    /**
+     * @brief Read the state of the GPIO pin.
+     *
+     * @param gpio The GPIO pin.
+     * @return The state of the GPIO pin (1 if high, 0 if low).
+     */
+    uint8_t (*read)(struct GPIO gpio);
+} gpio_t;
+
+/**
+ * @brief Create a GPIO pin.
+ *
+ * @param port The GPIO port.
+ * @param pin The GPIO pin.
+ * @return The created GPIO pin.
+ */
+extern gpio_t *gpio_create(GPIO_TypeDef *port, uint16_t pin);
+
+/**
+ * @brief Free the memory allocated for a GPIO pin.
+ *
+ * @param gpio The GPIO pin to free.
+ */
+extern void gpio_free(gpio_t *gpio);
 #endif // __GPIOS_H__

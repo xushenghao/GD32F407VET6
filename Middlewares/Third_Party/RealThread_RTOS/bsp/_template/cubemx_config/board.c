@@ -18,7 +18,7 @@
  * Please modify RT_HEAP_SIZE if you enable RT_USING_HEAP
  * the RT_HEAP_SIZE max value = (sram size - ZI size), 1024 means 1024 bytes
  */
-#define RT_HEAP_SIZE (15 * 1024)
+#define RT_HEAP_SIZE (15*1024)
 static rt_uint8_t rt_heap[RT_HEAP_SIZE];
 
 RT_WEAK void *rt_heap_begin_get(void)
@@ -35,7 +35,7 @@ RT_WEAK void *rt_heap_end_get(void)
 void SysTick_Handler(void)
 {
     rt_interrupt_enter();
-
+    
     rt_tick_increase();
 
     rt_interrupt_leave();
@@ -47,16 +47,16 @@ void SysTick_Handler(void)
 void rt_hw_board_init(void)
 {
     extern void SystemClock_Config(void);
-
+    
     HAL_Init();
     SystemClock_Config();
     SystemCoreClockUpdate();
-    /*
+    /* 
      * 1: OS Tick Configuration
      * Enable the hardware timer and call the rt_os_tick_callback function
-     * periodically with the frequency RT_TICK_PER_SECOND.
+     * periodically with the frequency RT_TICK_PER_SECOND. 
      */
-    HAL_SYSTICK_Config(HAL_RCC_GetHCLKFreq() / RT_TICK_PER_SECOND);
+    HAL_SYSTICK_Config(HAL_RCC_GetHCLKFreq()/RT_TICK_PER_SECOND);
 
     /* Call components board initial (use INIT_BOARD_EXPORT()) */
 #ifdef RT_USING_COMPONENTS_INIT
@@ -74,7 +74,7 @@ static UART_HandleTypeDef UartHandle;
 static int uart_init(void)
 {
     /* TODO: Please modify the UART port number according to your needs */
-    UartHandle.Instance = USART1;
+    UartHandle.Instance = USART2;
     UartHandle.Init.BaudRate = 115200;
     UartHandle.Init.WordLength = UART_WORDLENGTH_8B;
     UartHandle.Init.StopBits = UART_STOPBITS_1;
@@ -85,8 +85,7 @@ static int uart_init(void)
 
     if (HAL_UART_Init(&UartHandle) != HAL_OK)
     {
-        while (1)
-            ;
+        while (1);
     }
     return 0;
 }

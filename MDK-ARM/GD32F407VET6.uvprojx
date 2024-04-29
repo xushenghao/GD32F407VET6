@@ -339,7 +339,7 @@
               <MiscControls></MiscControls>
               <Define>STM32,STM32F407xx,USE_HAL_DRIVER</Define>
               <Undefine></Undefine>
-              <IncludePath>../Core/Inc;../Drivers/STM32F4xx_HAL_Driver/Inc;../Drivers/CMSIS/Device/ST/STM32F4xx/Include;../Drivers/CMSIS/Include;../User/lib/inc;../User/system/inc;../User/system/bsp;../User/application;../User/lib/u8g2;../Drivers/STM32F4xx_HAL_Driver/Inc/Legacy;../RT-Thread;../Middlewares/Third_Party/RealThread_RTOS/include/;../Middlewares/Third_Party/RealThread_RTOS/bsp/_template/cubemx_config</IncludePath>
+              <IncludePath>../Core/Inc;../Drivers/STM32F4xx_HAL_Driver/Inc;../Drivers/CMSIS/Device/ST/STM32F4xx/Include;../Drivers/CMSIS/Include;../User/lib/inc;../User/system/inc;../User/system/bsp;../User/system/drivers;../User/application;../User/lib/u8g2;../Drivers/STM32F4xx_HAL_Driver/Inc/Legacy;../RT-Thread;../Middlewares/Third_Party/RealThread_RTOS/include/;../Middlewares/Third_Party/RealThread_RTOS/bsp/_template/cubemx_config</IncludePath>
             </VariousControls>
           </Cads>
           <Aads>
@@ -889,6 +889,21 @@
               <FileName>gpios.c</FileName>
               <FileType>1</FileType>
               <FilePath>..\User\system\bsp\gpios.c</FilePath>
+            </File>
+            <File>
+              <FileName>pwms.c</FileName>
+              <FileType>1</FileType>
+              <FilePath>..\User\system\bsp\pwms.c</FilePath>
+            </File>
+          </Files>
+        </Group>
+        <Group>
+          <GroupName>User/system/drivers</GroupName>
+          <Files>
+            <File>
+              <FileName>step_motor.c</FileName>
+              <FileType>1</FileType>
+              <FilePath>..\User\system\drivers\step_motor.c</FilePath>
             </File>
           </Files>
         </Group>
@@ -4927,6 +4942,21 @@
               <FileName>gpios.c</FileName>
               <FileType>1</FileType>
               <FilePath>..\User\system\bsp\gpios.c</FilePath>
+            </File>
+            <File>
+              <FileName>pwms.c</FileName>
+              <FileType>1</FileType>
+              <FilePath>..\User\system\bsp\pwms.c</FilePath>
+            </File>
+          </Files>
+        </Group>
+        <Group>
+          <GroupName>User/system/drivers</GroupName>
+          <Files>
+            <File>
+              <FileName>step_motor.c</FileName>
+              <FileType>1</FileType>
+              <FilePath>..\User\system\drivers\step_motor.c</FilePath>
             </File>
           </Files>
         </Group>

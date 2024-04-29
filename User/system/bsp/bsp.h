@@ -13,4 +13,5 @@
 #define __BSP_H__
 
 #include "gpios.h"
+#include "pwms.h"
 #endif // __BSP_H__

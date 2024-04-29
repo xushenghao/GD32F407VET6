@@ -31,6 +31,8 @@ extern "C" {
 
 /* Private includes ----------------------------------------------------------*/
 /* USER CODE BEGIN Includes */
+#include <rtthread.h>
+#include <tim.h>
 #include "lib.h"
 #include "bsp.h"
 /* USER CODE END Includes */
@@ -64,6 +66,18 @@ void Error_Handler(void);
 #define SPI1_CS_GPIO_Port GPIOA
 #define LED_Pin GPIO_PIN_2
 #define LED_GPIO_Port GPIOB
+#define TMC_DIAG_Pin GPIO_PIN_10
+#define TMC_DIAG_GPIO_Port GPIOD
+#define TMC_DIR_Pin GPIO_PIN_11
+#define TMC_DIR_GPIO_Port GPIOD
+#define TMC_STEP_Pin GPIO_PIN_12
+#define TMC_STEP_GPIO_Port GPIOD
+#define TMC_MS2_Pin GPIO_PIN_13
+#define TMC_MS2_GPIO_Port GPIOD
+#define TMC_MS1_Pin GPIO_PIN_14
+#define TMC_MS1_GPIO_Port GPIOD
+#define TMC_EN_Pin GPIO_PIN_15
+#define TMC_EN_GPIO_Port GPIOD
 #define OLED_SDA_Pin GPIO_PIN_7
 #define OLED_SDA_GPIO_Port GPIOB
 
