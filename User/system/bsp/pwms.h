@@ -70,4 +70,5 @@ typedef struct
 } pdctrl_t;
 
 void pwms_dynamic_frequency(pdctrl_t *pdctrl, uint32_t arr); // 动态改变PWM频率
+void pwms_set_duty(pdctrl_t *pdctrl, float32 percent);       // 设置占空比
 #endif                                                       // __PWMS_H__

@@ -1,4 +1,5 @@
 #include "step_motor.h"
+#include "pwms.h"
 
 step_motor_t step_motors[STEP_MOTOR_MAX];
 
@@ -22,6 +23,12 @@ void step_motor_init(step_motor_index_e index, step_motor_hardware_t hardware)
     motor->default_arr = PWM_GET_ARR(hd->tim);
     motor->hardware.en->reset(*motor->hardware.en);
     motor->hardware.dir->reset(*motor->hardware.dir);
+
+    pdctrl_t pdctrl = {
+        .tim = motor->hardware.tim,
+        .chan = motor->hardware.chan,
+    };
+    pwms_set_duty(&pdctrl, 50);
 }
 
 /**
@@ -41,20 +48,34 @@ void step_motor_start(step_motor_index_e index)
 /**
  * @brief   步进电机停止
  * @param {step_motor_index_e} index    步进电机索引
- * @param {uint8_t} arr    自动重装值
  * @return {*}
  * @note
  */
-void step_motor_prescaler_start(step_motor_index_e index, uint16_t arr)
+void step_motor_stop(step_motor_index_e index)
 {
     DBG_ASSERT(index < STEP_MOTOR_MAX __DBG_LINE);
     step_motor_t *motor = &step_motors[index];
-    motor->hardware.en->set(*motor->hardware.en);
-    pdctrl_t pdctrl = {
-        .tim = motor->hardware.tim,
-        .chan = motor->hardware.chan,
-        .default_arr = motor->default_arr,
-        .pwm_wid = 13,
-    };
-    pwms_dynamic_frequency(&pdctrl, arr);
+    motor->hardware.en->reset(*motor->hardware.en); /* 使能 */
+    PWM_STOP(motor->hardware.tim, motor->hardware.chan);
 }
+
+// /**
+//  * @brief   步进电机编变频
+//  * @param {step_motor_index_e} index    步进电机索引
+//  * @param {uint8_t} arr    自动重装值
+//  * @return {*}
+//  * @note
+//  */
+// void step_motor_prescaler_start(step_motor_index_e index, uint16_t arr)
+// {
+//     DBG_ASSERT(index < STEP_MOTOR_MAX __DBG_LINE);
+//     step_motor_t *motor = &step_motors[index];
+//     motor->hardware.en->set(*motor->hardware.en);
+//     pdctrl_t pdctrl = {
+//         .tim = motor->hardware.tim,
+//         .chan = motor->hardware.chan,
+//         .default_arr = motor->default_arr,
+//         .pwm_wid = 13,
+//     };
+//     pwms_dynamic_frequency(&pdctrl, arr);
+// }

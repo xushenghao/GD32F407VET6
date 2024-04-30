@@ -9,7 +9,6 @@ static struct rt_thread led_thread;
 static char step_motor_thread_stack[RT_MAIN_THREAD_STACK_SIZE];
 static struct rt_thread step_motor_thread;
 
-static uint16_t arr = 1000;
 void led_thread_entry(void *paramenter)
 {
     while (1)
@@ -23,8 +22,8 @@ void step_motor_thread_entry(void *paramenter)
 {
     while (1)
     {
-        step_motor_prescaler_start(STEP_MOTOR_1, arr);
-        rt_thread_mdelay(1000);
+        step_motor_start(STEP_MOTOR_1);
+        rt_thread_mdelay(5000);
     }
 }
 

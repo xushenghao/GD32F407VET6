@@ -52,9 +52,17 @@ void step_motor_start(step_motor_index_e index);
 /**
  * @brief   步进电机停止
  * @param {step_motor_index_e} index    步进电机索引
- * @param {uint8_t} arr    自动重装值
  * @return {*}
  * @note
  */
-void step_motor_prescaler_start(step_motor_index_e index, uint16_t arr);
+void step_motor_stop(step_motor_index_e index);
+
+// /**
+//  * @brief   步进电机停止
+//  * @param {step_motor_index_e} index    步进电机索引
+//  * @param {uint8_t} arr    自动重装值
+//  * @return {*}
+//  * @note
+//  */
+// void step_motor_prescaler_start(step_motor_index_e index, uint16_t arr);
 #endif // __STEP_MOTOR_H

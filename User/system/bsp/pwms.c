@@ -49,3 +49,10 @@ void pwms_dynamic_frequency(pdctrl_t *pdctrl, uint32_t arr)
     PWM_SET_DUTY(pdctrl->tim, pdctrl->chan, duty);
     PWM_START(pdctrl->tim, pdctrl->chan);
 }
+
+void pwms_set_duty(pdctrl_t *pdctrl, float32 percent)
+{
+    uint16_t arr = __HAL_TIM_GET_AUTORELOAD(pdctrl->tim);
+    uint16_t duty = arr * percent / 100;
+    PWM_SET_DUTY(pdctrl->tim, pdctrl->chan, duty);
+}
